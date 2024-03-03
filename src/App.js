@@ -9,6 +9,7 @@ import { LoadMoreBtn } from "./Components/Button/Button";
 import { createPortal } from "react-dom";
 import { Spinner } from "./Components/Spinner/Spinner";
 import { Wrapper } from "./App.styled";
+import { Context } from "./Components/Context/Context";
 
 class App extends Component {
   state = {
@@ -94,6 +95,7 @@ class App extends Component {
         {this.state.img && (
           <Modal bigImg={this.state.img} closeModal={this.closeModal} />
         )}
+        <Context />
       </Wrapper>
     );
   }
