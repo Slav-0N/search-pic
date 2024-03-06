@@ -1,25 +1,26 @@
 import { createContext, useContext, useState } from "react";
 
-const UserContext = createContext();
-export const useUser = () => useContext(UserContext);
+const CreateUser = createContext();
+export const useUser = () => useContext(CreateUser);
 
 export const UserProvider = ({ children }) => {
   const [name, setName] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const logIn = () => {
-    console.log("buba");
-    setName("Mango");
-    setIsLoading(true);
+    console.log(name, isLoggedIn);
+    setIsLoggedIn(true);
+    setName("Buba");
   };
+
   const logOut = () => {
+    setIsLoggedIn(false);
     setName(null);
-    setIsLoading(false);
   };
 
   return (
-    <UserContext.Provider value={{ name, isLoading, logIn, logOut }}>
+    <CreateUser.Provider value={{ name, isLoggedIn, logIn, logOut }}>
       {children}
-    </UserContext.Provider>
+    </CreateUser.Provider>
   );
 };

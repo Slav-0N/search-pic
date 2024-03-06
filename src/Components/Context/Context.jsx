@@ -1,19 +1,16 @@
-import React from "react";
 import { useUser } from "../../api/helpers/UserContecst/UserContecst";
 
 export const Context = () => {
-  const { name, isLoading, logIn, logOut } = useUser();
+  const { name, isLoggedIn, logIn, logOut } = useUser();
+  console.log(name, isLoggedIn, logIn, logOut);
+
   return (
     <div>
-      {isLoading && <p>{name}</p>}
-      {isLoading ? (
-        <button type="button" onClick={logOut}>
-          LogOUT
-        </button>
+      {isLoggedIn && <p>{name}</p>}
+      {isLoggedIn ? (
+        <button onClick={() => logOut()}>LogOUT</button>
       ) : (
-        <button type="button" onClick={logIn}>
-          Login
-        </button>
+        <button onClick={() => logIn()}>Login</button>
       )}
     </div>
   );

@@ -10,6 +10,8 @@ import { createPortal } from "react-dom";
 import { Spinner } from "./Components/Spinner/Spinner";
 import { Wrapper } from "./App.styled";
 import { Context } from "./Components/Context/Context";
+import UseRef from "./Components/UseRef/UseRef";
+import { UseMemo } from "./api/helpers/UseMemo/UseMemo";
 
 class App extends Component {
   state = {
@@ -96,6 +98,9 @@ class App extends Component {
           <Modal bigImg={this.state.img} closeModal={this.closeModal} />
         )}
         <Context />
+        <UseRef source="http://media.w3.org/2010/05/sintel/trailer.mp4" />
+
+        <UseMemo />
       </Wrapper>
     );
   }
