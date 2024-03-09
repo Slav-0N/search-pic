@@ -1,37 +1,35 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class Searchbar extends Component {
-  state = { picQuery: "" };
+const Searchbar = ({ addNewQuery }) => {
+  const [picQuery, setPicQuery] = useState("");
 
-  queryFormChange = ({ target: { value } }) => {
-    this.setState({ picQuery: value });
-  };
-  queryFormSubmit = (e) => {
+  const queryFormChange = ({ target: { value } }) => setPicQuery(value);
+
+  const queryFormSubmit = (e) => {
     e.preventDefault();
-
-    this.props.addNewQuery(this.state.picQuery);
+    addNewQuery(picQuery);
   };
-  render() {
-    return (
-      <>
-        <header className="searchbar">
-          <form className="form" onSubmit={this.queryFormSubmit}>
-            <button type="submit" className="button">
-              <span className="button-label">Search</span>
-            </button>
 
-            <input
-              className="input"
-              type="text"
-              autoComplete="off"
-              autoFocus
-              placeholder="Search images and photos"
-              onChange={this.queryFormChange}
-              value={this.state.picQuery}
-            />
-          </form>
-        </header>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <header className="searchbar">
+        <form className="form" onSubmit={queryFormSubmit}>
+          <button type="submit" className="button">
+            <span className="button-label">Search</span>
+          </button>
+
+          <input
+            className="input"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search images and photos"
+            onChange={queryFormChange}
+            value={picQuery}
+          />
+        </form>
+      </header>
+    </>
+  );
+};
+export default Searchbar;

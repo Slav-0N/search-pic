@@ -1,4 +1,4 @@
-import { useUser } from "../../api/helpers/UserContecst/UserContecst";
+import { useUser } from "../UserContecst/UserContecst";
 
 export const Context = () => {
   const { name, isLoggedIn, logIn, logOut } = useUser();
